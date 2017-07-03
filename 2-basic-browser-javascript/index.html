@@ -3,24 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>the holy grail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+    <script src="./main.js" charset="utf-8"></script>
   </head>
   <body>
-    <div class="app">
-      <div class="header">
-        Total: 0
+    <div class="app container column">
+      <div class="header row">
+        <div class="totalText">
+          Total: <span class="total">0</span>
+        </div>
       </div>
-      <div class="body">
-        <div class="left"></div>
-        <div class="center">
-          <div class="button">
-            +1
+      <div class="body row">
+        <div class="left column">
+          <div class="leftButton row">
+            1.22
           </div>
         </div>
-        <div class="right"></div>
+        <div class="center column">
+          <div class="button row">
+            <div class="buttonText">
+              +<span class="currentMultiplier">1</span>
+            </div>
+          </div>
+        </div>
+        <div class="right column"></div>
       </div>
-      <div class="footer">
+      <div class="footer row">
         Made w/ &lt;3 @ FastTrack'D
       </div>
     </div>
