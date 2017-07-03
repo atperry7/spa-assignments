@@ -19,7 +19,7 @@
   height: 15%;
   text-align: center;
   background-color: pink;
-  font-size: 25px;
+  font-size: large;
 }
 
 .body {
@@ -47,7 +47,7 @@
   background-color: white;
   border-radius: 150px;
   display: flex;
-  font-size: 15px;
+  font-size: medium;
 }
 
 span {
@@ -62,5 +62,5 @@ span {
 .footer {
   text-align: center;
   background-color: gray;
-  font-size: 10px;
+  font-size: small;
 }
