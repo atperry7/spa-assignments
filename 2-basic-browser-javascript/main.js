@@ -6,6 +6,9 @@ $(document).ready(function () {
   const multiplier = 1.2
   const intervalIds = []
 
+  Storages.alwaysUseJsonInStorage(true)
+  let myStorage = Storages.localStorage
+
   const addition = (num, num2) => num + num2
   const multiply = (num, num2) => num * num2
   const subtraction = (num, num2) => num - num2
@@ -16,8 +19,7 @@ $(document).ready(function () {
   const getCurrentTotal = () => Number($('.total').html())
   const getCurrentMultiplier = () => Number($('.currentMultiplier').html())
   const getAutoClickTotal = () => Number($('.autoClickTotal').html())
-  const checkDisplayTotalGreaterThanEqual = number =>
-    Number($('.total').html()) >= number
+  const checkDisplayTotalGreaterThanEqual = number => Number($('.total').html()) >= number
   const setMultiplierState = () => {
     if (getCurrentTotal() < pentalityForMultipler) {
       $('.leftButton').css({
@@ -46,8 +48,7 @@ $(document).ready(function () {
     }
   }
 
-  Storages.alwaysUseJsonInStorage(true)
-  let myStorage = Storages.localStorage
+
   init = () => {
     if (!myStorage.isSet('currentTotal') || !myStorage.isEmpty('currentTotal')) {
       updateDisplay(myStorage.get('currentTotal'))
@@ -99,17 +100,20 @@ $(document).ready(function () {
 
   $('.rightButton').click(function() {
     if (checkDisplayTotalGreaterThanEqual(pentalityForAuto)) {
-      updateDisplay(subtraction(getCurrentTotal, pentalityForAuto))
-      setAutoClickerState()
-
       let id = setInterval(() => {
         updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
         setMultiplierState()
         setAutoClickerState()
       }, 1000)
 
+      updateDisplay(subtraction(getCurrentTotal, pentalityForAuto))
       intervalIds.push(id)
       updateAutoClickTotal(addition(getAutoClickTotal(), 1))
+      setAutoClickerState()
     }
+  })
+
+  $('.resetButton').click(function() {
+    
   })
 })
