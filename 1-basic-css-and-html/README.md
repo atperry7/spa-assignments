@@ -22,22 +22,22 @@ All text should be colored black with 87% opacity.
 **Important**: The layout you implement must be _responsive_, which means that as the browser is resized, all proportionate elements of the layout should scale smoothly. Elements with an absolute size should not scale, but should scale any proportionate positioning, such as centering, within a proportionate element, e.g., if the center of the containing element moves, the centered element should move with it. There should be no unspecified gaps between around the edge of the screen or between layout elements on the page.
 
 ### Milestones
-- [ ] Layout & Spacing
-  - [ ] No visible gaps around edge or between layout elements on the page, even when resizing the browser
-  - [ ] Header & Footer take up 1/15th of the available vertical space, each
-  - [ ] Center column is 960px wide
-  - [ ] Left and right side bars should fill the remaining horizontal space evenly
-  - [ ] Center button is 150px x 150px, circular, and fully centered in its containing column
-- [ ] Text
-  - [ ] All text is black with 87% opacity
-  - [ ] All text is centered relative to its containing element
-  - [ ] Header text has a large font size
-  - [ ] Button text has a medium font size
-  - [ ] Footer text has a small font size
-- [ ] Background colors
-  - [ ] Header : pink
-  - [ ] Left side bar : red
-  - [ ] Center column : green
-  - [ ] Center button : white
-  - [ ] Right side bar : blue
-  - [ ] Footer : grey
+- [x] Layout & Spacing
+  - [x] No visible gaps around edge or between layout elements on the page, even when resizing the browser
+  - [x] Header & Footer take up 1/15th of the available vertical space, each
+  - [x] Center column is 960px wide
+  - [x] Left and right side bars should fill the remaining horizontal space evenly
+  - [x] Center button is 150px x 150px, circular, and fully centered in its containing column
+- [x] Text
+  - [x] All text is black with 87% opacity
+  - [x] All text is centered relative to its containing element
+  - [x] Header text has a large font size
+  - [x] Button text has a medium font size
+  - [x] Footer text has a small font size
+- [x] Background colors
+  - [x] Header : pink
+  - [x] Left side bar : red
+  - [x] Center column : green
+  - [x] Center button : white
+  - [x] Right side bar : blue
+  - [x] Footer : grey
