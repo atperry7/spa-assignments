@@ -67,7 +67,8 @@ body {
 }
 
 .button.row,
-.leftButton.row {
+.leftButton.row,
+.rightButton.row {
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -84,6 +85,8 @@ body {
 
 .right.column {
   background-color: blue;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer.row {

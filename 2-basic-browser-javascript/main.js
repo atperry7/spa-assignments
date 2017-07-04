@@ -1,15 +1,26 @@
 $(document).ready(function() {
   'user strict'
-  let total = 0
-  let currentMultiplier = Number($('.currentMultiplier').html())
+
+  const addition = (num, num2) => num + num2
+  const multiply = (num, num2) => num * num2
+  const subtraction = (num, num2) => num - num2
+
+  const updateDisplay = func => $('.total').html(func)
+
+  const getCurrentTotal = () => Number($('.total').html())
+
+  const getCurrentMultiplier = () => Number($('.currentMultiplier').html())
 
   $('.leftButton').click(function() {
-    currentMultiplier = currentMultiplier * 1.2
-    $('.currentMultiplier').html(currentMultiplier)
+    if (Number($('.total').html()) < 10) {
+      console.log(getCurrentTotal())
+    } else {
+      updateDisplay(subtraction(getCurrentTotal(), 10))
+      $('.currentMultiplier').html(multiply(getCurrentMultiplier(), 1.2))
+    }
   })
 
   $('.button').click(function() {
-    total = total + currentMultiplier
-    $('.total').html(total)
+    updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
   })
 })
