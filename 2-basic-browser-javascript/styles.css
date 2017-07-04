@@ -58,6 +58,11 @@ body {
   justify-content: center;
 }
 
+.leftBar {
+  flex: none;
+  color: white;
+}
+
 .center.column {
   width: 960px;
   flex: none;
@@ -87,6 +92,11 @@ body {
   background-color: blue;
   align-items: center;
   justify-content: center;
+}
+
+.rightBar {
+  flex: none;
+  color: white;
 }
 
 .footer.row {
