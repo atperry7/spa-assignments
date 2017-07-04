@@ -13,6 +13,7 @@ $(document).ready(function () {
   const multiply = (num, num2) => num * num2
   const subtraction = (num, num2) => num - num2
 
+  const saveData = () => myStorage.set( {currentTotal: getCurrentTotal(), currentMultiplier: getCurrentMultiplier(), currentAutoClicks: getAutoClickTotal()})
   const updateDisplay = func => $('.total').html(func)
   const updateAutoClickTotal = func => $('.autoClickTotal').html(func)
   const updateCurrentMultiplier = number => $('.currentMultiplier').html(number)
@@ -24,6 +25,10 @@ $(document).ready(function () {
   getCurrentMultiplier() === Number(myStorage.get('currentMultiplier')) &&
   getAutoClickTotal() === Number(myStorage.get('currentAutoClicks'))
 
+  window.onbeforeunload = function () {
+    saveData()
+    return 'Data Saved'
+  }
   // State checkers
   const setMultiplierState = () => {
     if (getCurrentTotal() < pentalityForMultipler) {
@@ -85,8 +90,7 @@ $(document).ready(function () {
       for (var i = 0; i < myStorage.get('currentAutoClicks'); i++) {
         let id = setInterval(() => {
           updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
-          setMultiplierState()
-          setAutoClickerState()
+          checkState()
         }, 1000)
 
         intervalIds.push(id)
@@ -94,8 +98,7 @@ $(document).ready(function () {
     }
 
     setInterval(() => {
-      myStorage.set(
-        {currentTotal: getCurrentTotal(), currentMultiplier: getCurrentMultiplier(), currentAutoClicks: getAutoClickTotal()})
+      saveData()
       console.log(`Auto Save Called`)
     }, 10000)
   }
@@ -137,8 +140,7 @@ $(document).ready(function () {
       updateDisplay(0)
       updateAutoClickTotal(0)
       updateCurrentMultiplier(1)
-      myStorage.set(
-        {currentTotal: getCurrentTotal(), currentMultiplier: getCurrentMultiplier(), currentAutoClicks: getAutoClickTotal()})
+      saveData()
       checkState()
     }
   })
