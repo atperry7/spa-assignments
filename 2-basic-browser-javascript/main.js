@@ -25,10 +25,7 @@ $(document).ready(function () {
   getCurrentMultiplier() === Number(myStorage.get('currentMultiplier')) &&
   getAutoClickTotal() === Number(myStorage.get('currentAutoClicks'))
 
-  // window.onbeforeunload = function () {
-  //   saveData()
-  //   return 'Data Saved'
-  // }
+  // Saves Data when the window is closed
   $(window).on('unload', function () {
     saveData()
   })
@@ -81,6 +78,7 @@ $(document).ready(function () {
 
 
   init = () => {
+    // Checks if not set or is zero
     if (!myStorage.isSet('currentTotal') || !myStorage.isEmpty('currentTotal')) {
       updateDisplay(myStorage.get('currentTotal'))
     }
@@ -101,12 +99,14 @@ $(document).ready(function () {
       }
     }
 
+    // Auto Save data
     setInterval(() => {
       saveData()
       console.log(`Auto Saved`)
-    }, 10000)
+    }, 30000)
   }
 
+  // Runs the init() and checkState() to see if anything needs updated
   init()
   checkState()
 
