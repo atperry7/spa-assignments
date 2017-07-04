@@ -20,6 +20,11 @@ $(document).ready(function () {
   const getCurrentMultiplier = () => Number($('.currentMultiplier').html())
   const getAutoClickTotal = () => Number($('.autoClickTotal').html())
   const checkDisplayTotalGreaterThanEqual = number => Number($('.total').html()) >= number
+  const currentSaveState = () => getCurrentTotal() === Number(myStorage.get('currentTotal')) &&
+  getCurrentMultiplier() === Number(myStorage.get('currentMultiplier')) &&
+  getAutoClickTotal() === Number(myStorage.get('currentAutoClicks'))
+
+  // State checkers
   const setMultiplierState = () => {
     if (getCurrentTotal() < pentalityForMultipler) {
       $('.leftButton').css({
@@ -39,6 +44,23 @@ $(document).ready(function () {
     } else {
       $('.rightButton').css({ cursor: 'pointer', 'background-color': 'white' })
     }
+  }
+
+  const setResetClickerState = () => {
+    if (currentSaveState()) {
+      $('.resetButton').css({
+        cursor: 'not-allowed',
+        'background-color': 'grey'
+      })
+    } else {
+      $('.resetButton').css({ cursor: 'pointer', 'background-color': 'red' })
+    }
+  }
+
+  const checkState = () => {
+    setAutoClickerState()
+    setMultiplierState()
+    setResetClickerState()
   }
 
   const clearAllIntervals = array => {
@@ -79,41 +101,45 @@ $(document).ready(function () {
   }
 
   init()
-  setAutoClickerState()
-  setMultiplierState()
+  checkState()
 
-  $('.leftButton').click(function() {
+  $('.leftButton').click(function () {
     if (checkDisplayTotalGreaterThanEqual(pentalityForMultipler)) {
       updateDisplay(subtraction(getCurrentTotal(), pentalityForMultipler))
       $('.currentMultiplier').html(multiply(getCurrentMultiplier(), multiplier))
     }
 
-    setMultiplierState()
-    setAutoClickerState()
+    checkState()
   })
 
-  $('.button').click(function() {
+  $('.button').click(function () {
     updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
-    setMultiplierState()
-    setAutoClickerState()
+    checkState()
   })
 
-  $('.rightButton').click(function() {
+  $('.rightButton').click(function () {
     if (checkDisplayTotalGreaterThanEqual(pentalityForAuto)) {
       let id = setInterval(() => {
         updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
-        setMultiplierState()
-        setAutoClickerState()
+        checkState()
       }, 1000)
 
       updateDisplay(subtraction(getCurrentTotal, pentalityForAuto))
       intervalIds.push(id)
       updateAutoClickTotal(addition(getAutoClickTotal(), 1))
-      setAutoClickerState()
+      checkState()
     }
   })
 
-  $('.resetButton').click(function() {
-    
+  $('.resetButton').click(function () {
+    if (!currentSaveState()) {
+      clearAllIntervals(intervalIds)
+      updateDisplay(0)
+      updateAutoClickTotal(0)
+      updateCurrentMultiplier(1)
+      myStorage.set(
+        {currentTotal: getCurrentTotal(), currentMultiplier: getCurrentMultiplier(), currentAutoClicks: getAutoClickTotal()})
+      checkState()
+    }
   })
 })

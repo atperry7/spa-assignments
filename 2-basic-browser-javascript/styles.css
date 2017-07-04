@@ -58,6 +58,7 @@ body {
   border-radius: 10px;
   background-color: red;
   cursor: pointer;
+  user-select: none;
 }
 
 .body.row {
