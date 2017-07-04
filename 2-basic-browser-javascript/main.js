@@ -1,5 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
   'user strict'
+
   const pentalityForMultipler = 10
   const pentalityForAuto = 100
   const multiplier = 1.2
@@ -10,10 +11,11 @@ $(document).ready(function() {
   const subtraction = (num, num2) => num - num2
 
   const updateDisplay = func => $('.total').html(func)
+  const updateAutoClickTotal = func => $('.autoClickTotal').html(func)
+  const updateCurrentMultiplier = number => $('.currentMultiplier').html(number)
   const getCurrentTotal = () => Number($('.total').html())
   const getCurrentMultiplier = () => Number($('.currentMultiplier').html())
   const getAutoClickTotal = () => Number($('.autoClickTotal').html())
-  const updateAutoClickTotal = func => $('.autoClickTotal').html(func)
   const checkDisplayTotalGreaterThanEqual = number =>
     Number($('.total').html()) >= number
   const setMultiplierState = () => {
@@ -44,6 +46,38 @@ $(document).ready(function() {
     }
   }
 
+  Storages.alwaysUseJsonInStorage(true)
+  let myStorage = Storages.localStorage
+  init = () => {
+    if (!myStorage.isSet('currentTotal') || !myStorage.isEmpty('currentTotal')) {
+      updateDisplay(myStorage.get('currentTotal'))
+    }
+
+    if (myStorage.isSet('currentMultiplier') && !myStorage.isEmpty('currentMultiplier')) {
+      updateCurrentMultiplier(myStorage.get('currentMultiplier'))
+    }
+
+    if (!myStorage.isSet('currentAutoClicks') || !myStorage.isEmpty('currentAutoClicks')) {
+      updateAutoClickTotal(myStorage.get('currentAutoClicks'))
+      for (var i = 0; i < myStorage.get('currentAutoClicks'); i++) {
+        let id = setInterval(() => {
+          updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
+          setMultiplierState()
+          setAutoClickerState()
+        }, 1000)
+
+        intervalIds.push(id)
+      }
+    }
+
+    setInterval(() => {
+      myStorage.set(
+        {currentTotal: getCurrentTotal(), currentMultiplier: getCurrentMultiplier(), currentAutoClicks: getAutoClickTotal()})
+      console.log(`Auto Save Called`)
+    }, 10000)
+  }
+
+  init()
   setAutoClickerState()
   setMultiplierState()
 
@@ -66,6 +100,7 @@ $(document).ready(function() {
   $('.rightButton').click(function() {
     if (checkDisplayTotalGreaterThanEqual(pentalityForAuto)) {
       updateDisplay(subtraction(getCurrentTotal, pentalityForAuto))
+      setAutoClickerState()
 
       let id = setInterval(() => {
         updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
