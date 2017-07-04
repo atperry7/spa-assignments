@@ -40,24 +40,24 @@ Of course, automatically saving progress makes it difficult to test the app and 
 If the current game state matches the initial state, the reset button should be disabled.
 
 ### Milestones
-- [ ] Basic gameplay
-  - [ ] When the center button is clicked, the player's total is incremented by the amount shown on the button
-  - [ ] The total displayed in the header updates automatically
-- [ ] Multipliers
-  - [ ] Multiplier button added to left side bar
-  - [ ] Cost label added to left side bar
-  - [ ] Disabled when cost exceeds player total
-  - [ ] When clicked and not disabled updates the center button and player total accordingly
-- [ ] Autoclickers
-  - [ ] Autoclicker button added to right side bar
-  - [ ] Autoclicker total label added to right side bar
-  - [ ] Cost label added to right side bar
-  - [ ] Disabled when cost exceeds player total
-  - [ ] When clicked and not disabled updates the player and autoclicker totals and triggers a new autoclicker accordingly
-- [ ] Save Data
-  - [ ] Automatically saves application state to local, session, or cookie storage
-  - [ ] Automatically loads application state on page load if data exists
-- [ ] Reset
-  - [ ] Reset button added to header
-  - [ ] Disabled when game state matches initial
-  - [ ] When clicked and not disabled, resets game state to initial values and clears session, local, or cookie storage
+- [x] Basic gameplay
+  - [x] When the center button is clicked, the player's total is incremented by the amount shown on the button
+  - [x] The total displayed in the header updates automatically
+- [x] Multipliers
+  - [x] Multiplier button added to left side bar
+  - [x] Cost label added to left side bar
+  - [x] Disabled when cost exceeds player total
+  - [x] When clicked and not disabled updates the center button and player total accordingly
+- [x] Autoclickers
+  - [x] Autoclicker button added to right side bar
+  - [x] Autoclicker total label added to right side bar
+  - [x] Cost label added to right side bar
+  - [x] Disabled when cost exceeds player total
+  - [x] When clicked and not disabled updates the player and autoclicker totals and triggers a new autoclicker accordingly
+- [x] Save Data
+  - [x] Automatically saves application state to local, session, or cookie storage
+  - [x] Automatically loads application state on page load if data exists
+- [x] Reset
+  - [x] Reset button added to header
+  - [x] Disabled when game state matches initial
+  - [x] When clicked and not disabled, resets game state to initial values and clears session, local, or cookie storage
