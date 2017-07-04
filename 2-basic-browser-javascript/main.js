@@ -25,10 +25,14 @@ $(document).ready(function () {
   getCurrentMultiplier() === Number(myStorage.get('currentMultiplier')) &&
   getAutoClickTotal() === Number(myStorage.get('currentAutoClicks'))
 
-  window.onbeforeunload = function () {
+  // window.onbeforeunload = function () {
+  //   saveData()
+  //   return 'Data Saved'
+  // }
+  $(window).on('unload', function () {
     saveData()
-    return 'Data Saved'
-  }
+  })
+
   // State checkers
   const setMultiplierState = () => {
     if (getCurrentTotal() < pentalityForMultipler) {
@@ -99,7 +103,7 @@ $(document).ready(function () {
 
     setInterval(() => {
       saveData()
-      console.log(`Auto Save Called`)
+      console.log(`Auto Saved`)
     }, 10000)
   }
 
@@ -122,15 +126,16 @@ $(document).ready(function () {
 
   $('.rightButton').click(function () {
     if (checkDisplayTotalGreaterThanEqual(pentalityForAuto)) {
+      updateDisplay(subtraction(getCurrentTotal(), pentalityForAuto))
+      updateAutoClickTotal(addition(getAutoClickTotal(), 1))
+      checkState()
+
       let id = setInterval(() => {
         updateDisplay(addition(getCurrentTotal(), getCurrentMultiplier()))
         checkState()
       }, 1000)
 
-      updateDisplay(subtraction(getCurrentTotal, pentalityForAuto))
       intervalIds.push(id)
-      updateAutoClickTotal(addition(getAutoClickTotal(), 1))
-      checkState()
     }
   })
 
