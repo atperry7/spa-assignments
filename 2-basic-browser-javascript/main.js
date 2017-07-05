@@ -22,8 +22,8 @@ $(document).ready(function () {
   const getAutoClickTotal = () => Number($('.autoClickTotal').html())
   const checkDisplayTotalGreaterThanEqual = number => Number($('.total').html()) >= number
   const currentSaveState = () => getCurrentTotal() === Number(myStorage.get('currentTotal')) &&
-  getCurrentMultiplier() === Number(myStorage.get('currentMultiplier')) &&
-  getAutoClickTotal() === Number(myStorage.get('currentAutoClicks'))
+                                 getCurrentMultiplier() === Number(myStorage.get('currentMultiplier')) &&
+                                 getAutoClickTotal() === Number(myStorage.get('currentAutoClicks'))
 
   // Saves Data when the window is closed
   $(window).on('unload', function () {
