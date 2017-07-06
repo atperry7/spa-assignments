@@ -10,23 +10,23 @@ const controller =
     }
 
     get amount () {
-      return this.service.amount
+      return this.service.state.amount
     }
 
     get costOfMultiplier () {
-      return this.service.costOfMultiplier
+      return this.service.state.base.costOfMultiplier
     }
 
     get costOfAutoClicker () {
-      return this.service.costOfAutoClicker
+      return this.service.state.base.costOfAutoClicker
     }
 
     get multiplier () {
-      return this.service.multiplier
+      return this.service.state.base.multiplier
     }
 
     get autoClickerTotal () {
-      return this.service.autoClickerTotal
+      return this.service.state.base.autoClickerTotal
     }
 
     click () {
@@ -41,8 +41,12 @@ const controller =
       this.service.autoclick()
     }
 
-    disabled () {
-      return false
+    multiplierCostCheck () {
+      return this.service.canAffordModifier()
+    }
+
+    autoClickCostCheck () {
+      return this.service.canAffordAutoClick()
     }
 
     reset () {

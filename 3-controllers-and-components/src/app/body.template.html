@@ -8,8 +8,9 @@
 </div>
 <div class="row">
   <button
-      class="ft-btn col-xs-4 ng-class= disabled();"
-      ng-click="body.multiply()">
+      class="ft-btn col-xs-4"
+      ng-click="body.multiply()"
+      ng-disabled="body.multiplierCostCheck()">
     <h2>+{{body.multiplier}}</h2>
   </button>
   <button
@@ -19,7 +20,8 @@
   </button>
   <button
       class="ft-btn col-xs-4"
-      ng-click="body.autoclick()">
+      ng-click="body.autoclick()"
+      ng-disabled="body.autoClickCostCheck()">
     <h2>+1</h2>
   </button>
 </div>

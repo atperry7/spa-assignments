@@ -2,40 +2,61 @@ export class AppService {
 
   constructor ($interval) {
     'ngInject'
+    this.$interval = $interval
   }
 
-  amount = 1
-  total = 0
-  costOfMultiplier = 10
-  costOfAutoClicker = 100
-  multiplier = 1.2
-  autoClickerTotal = 0
+  state = {
+    amount: 1,
+    total: 0,
+    intervals: [],
+    base: {
+      costOfMultiplier: 10,
+      costOfAutoClicker: 10,
+      multiplier: 1.2,
+      autoClickerTotal: 0
+    }
+  }
 
   increment() {
-    this.total += this.amount
+    this.state.total += this.state.amount
   }
 
   multiply() {
-    if (this.total >= this.costOfMultiplier) {
-      this.amount *= this.multiplier
-      this.total -= this.costOfMultiplier
-      this.costOfMultiplier += this.costOfMultiplier / 2
+    if (this.state.total >= this.state.base.costOfMultiplier) {
+      this.state.amount *= this.state.base.multiplier
+      this.state.total -= this.state.base.costOfMultiplier
+      this.state.base.costOfMultiplier += this.state.base.costOfMultiplier / 2
     }
   }
 
   autoclick() {
-    if (this.total >= this.costOfAutoClicker) {
-      this.autoClickerTotal += 1
-      this.total -= this.costOfAutoClicker
-      this.costOfAutoClicker += this.costOfAutoClicker / 2
+    if (this.state.total >= this.state.base.costOfAutoClicker) {
+      this.state.base.autoClickerTotal += 1
+      this.state.total -= this.state.base.costOfAutoClicker
+      this.state.base.costOfAutoClicker += this.state.base.costOfAutoClicker / 2
+      this.state.intervals.push(this.$interval(() => {
+        this.state.total += this.state.amount
+      }, 1000))
     }
   }
 
   reset() {
-    this.total = 0
-    this.costOfMultiplier = 10
-    this.costOfAutoClicker = 100
-    this.amount = 1
-    this.autoClickerTotal = 0
+    this.state.total = 0
+    this.state.base.costOfMultiplier = 10
+    this.state.base.costOfAutoClicker = 100
+    this.state.amount = 1
+    this.state.base.autoClickerTotal = 0
+    for (var i = 0; i < this.state.intervals.length; i++) {
+      this.$interval.cancel(this.state.intervals[i])
+    }
   }
+
+  canAffordModifier () {
+    return this.state.total < this.state.base.costOfMultiplier
+  }
+
+  canAffordAutoClick () {
+    return this.state.total < this.state.base.costOfAutoClicker
+  }
+
 }
