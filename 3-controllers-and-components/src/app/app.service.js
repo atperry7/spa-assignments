@@ -19,6 +19,7 @@ export class AppService {
     if (this.total >= this.costOfMultiplier) {
       this.amount *= this.multiplier
       this.total -= this.costOfMultiplier
+      this.costOfMultiplier += this.costOfMultiplier / 2
     }
   }
 
@@ -26,9 +27,7 @@ export class AppService {
     if (this.total >= this.costOfAutoClicker) {
       this.autoClickerTotal += 1
       this.total -= this.costOfAutoClicker
-      $interval(function() {
-        increment()
-      }, 1000)
+      this.costOfAutoClicker += this.costOfAutoClicker / 2
     }
   }
 }

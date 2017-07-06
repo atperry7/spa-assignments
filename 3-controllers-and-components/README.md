@@ -37,8 +37,8 @@ Controllers and Components
   - [ ] If no user is logged in, only login form is visible
   - [ ] Upon login, the logged-in user's state is loaded into the game
   - [ ] Reset button functionality updated to only reset the current user's state
-- [ ] Scaling multiplier
-  - [ ] Multiplier amount increases as more multipliers are bought
-- [ ] Scaling costs
-  - [ ] Multiplier cost increases as more multipliers are bought
-  - [ ] Autoclicker cost increases as more autoclickers are bought
+- [x] Scaling multiplier
+  - [x] Multiplier amount increases as more multipliers are bought
+- [x] Scaling costs
+  - [x] Multiplier cost increases as more multipliers are bought
+  - [x] Autoclicker cost increases as more autoclickers are bought
