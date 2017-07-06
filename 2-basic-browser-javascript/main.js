@@ -13,7 +13,8 @@ $(document).ready(function () {
   const multiply = (num, num2) => num * num2
   const subtraction = (num, num2) => num - num2
 
-  const saveData = () => myStorage.set( {currentTotal: getCurrentTotal(), currentMultiplier: getCurrentMultiplier(), currentAutoClicks: getAutoClickTotal()})
+  const saveData = () => myStorage.set(
+    {currentTotal: getCurrentTotal(), currentMultiplier: getCurrentMultiplier(), currentAutoClicks: getAutoClickTotal()})
   const updateDisplay = func => $('.total').html(func)
   const updateAutoClickTotal = func => $('.autoClickTotal').html(func)
   const updateCurrentMultiplier = number => $('.currentMultiplier').html(number)

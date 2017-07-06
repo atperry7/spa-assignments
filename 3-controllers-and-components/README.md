@@ -10,18 +10,18 @@ Controllers and Components
 
 ### Milestones
 - [ ] Replicate existing functionality with AngularJS
-  - [ ] Basic gameplay
-    - [ ] When the primary button is clicked, the player's total is incremented by the amount shown on the button
-    - [ ] The total displayed in the header updates automatically
+  - [x] Basic gameplay
+    - [x] When the primary button is clicked, the player's total is incremented by the amount shown on the button
+    - [x] The total displayed in the header updates automatically
   - [ ] Multipliers
-    - [ ] Multiplier button added to UI
-    - [ ] Cost label added to UI
+    - [x] Multiplier button added to UI
+    - [x] Cost label added to UI
     - [ ] Disabled when cost exceeds player total
-    - [ ] When clicked and not disabled updates the primary button and player total accordingly
+    - [x] When clicked and not disabled updates the primary button and player total accordingly
   - [ ] Autoclickers
-    - [ ] Autoclicker button added to UI
-    - [ ] Autoclicker total label added to UI
-    - [ ] Cost label added to UI
+    - [x] Autoclicker button added to UI
+    - [x] Autoclicker total label added to UI
+    - [x] Cost label added to UI
     - [ ] Disabled when cost exceeds player total
     - [ ] When clicked and not disabled updates the player and autoclicker totals and triggers a new autoclicker accordingly
   - [ ] Save Data

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "webpack-dashboard -- webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot"
   },
   "standard": {
     "globals": ["ng"]

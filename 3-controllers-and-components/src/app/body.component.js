@@ -13,8 +13,36 @@ const controller =
       return this.service.amount
     }
 
+    get costOfMultiplier () {
+      return this.service.costOfMultiplier
+    }
+
+    get costOfAutoClicker () {
+      return this.service.costOfAutoClicker
+    }
+
+    get multiplier () {
+      return this.service.multiplier
+    }
+
+    get autoClickerTotal () {
+      return this.service.autoClickerTotal
+    }
+
     click () {
       this.service.increment()
+    }
+
+    multiply () {
+      this.service.multiply()
+    }
+
+    autoclick () {
+      this.service.autoclick()
+    }
+
+    disabled () {
+      return false
     }
   }
 

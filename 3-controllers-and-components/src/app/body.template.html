@@ -1,5 +1,26 @@
-<button
-    class="ft-btn col-md-12"
-    ng-click="body.click()">
-  <h2>+{{body.amount}}</h2>
-</button>
+<div class="row">
+  <span class="ft-label col-xs-4">Cost of Multiplier: {{body.costOfMultiplier}}</span>
+  <span class="ft-label col-xs-4"></span>
+  <span class="ft-label col-xs-4">
+    Cost of Auto Clicker: {{body.costOfAutoClicker}}<p>
+    Total Auto Clickers: {{body.autoClickerTotal}}
+  </span>
+</div>
+<div class="row">
+  <button
+      class="ft-btn col-xs-4"
+      ng-click="body.multiply()"
+      ng-class="{{body.disabled()}}">
+    <h2>+{{body.multiplier}}</h2>
+  </button>
+  <button
+      class="ft-btn col-xs-4"
+      ng-click="body.click()">
+    <h2>+{{body.amount | number:2}}</h2>
+  </button>
+  <button
+      class="ft-btn col-xs-4"
+      ng-click="body.autoclick()">
+    <h2>+1</h2>
+  </button>
+</div>
