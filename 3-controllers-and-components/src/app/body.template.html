@@ -1,8 +1,8 @@
 <div class="row">
-  <span class="ft-label col-xs-4">Cost of Multiplier: {{body.costOfMultiplier}}</span>
+  <span class="ft-label col-xs-4">Cost of Multiplier: {{body.costOfMultiplier | number:2}}</span>
   <span class="ft-label col-xs-4"></span>
   <span class="ft-label col-xs-4">
-    Cost of Auto Clicker: {{body.costOfAutoClicker}}<p>
+    Cost of Auto Clicker: {{body.costOfAutoClicker | number:2}}<p>
     Total Auto Clickers: {{body.autoClickerTotal}}
   </span>
 </div>
@@ -11,7 +11,7 @@
       class="ft-btn col-xs-4"
       ng-click="body.multiply()"
       ng-disabled="body.multiplierCostCheck()">
-    <h2>+{{body.multiplier}}</h2>
+    <h2>+{{body.multiplier | number:2}}</h2>
   </button>
   <button
       class="ft-btn col-xs-4"

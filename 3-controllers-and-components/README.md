@@ -13,24 +13,24 @@ Controllers and Components
   - [x] Basic gameplay
     - [x] When the primary button is clicked, the player's total is incremented by the amount shown on the button
     - [x] The total displayed in the header updates automatically
-  - [ ] Multipliers
+  - [x] Multipliers
     - [x] Multiplier button added to UI
     - [x] Cost label added to UI
-    - [ ] Disabled when cost exceeds player total
+    - [x] Disabled when cost exceeds player total
     - [x] When clicked and not disabled updates the primary button and player total accordingly
-  - [ ] Autoclickers
+  - [x] Autoclickers
     - [x] Autoclicker button added to UI
     - [x] Autoclicker total label added to UI
     - [x] Cost label added to UI
-    - [ ] Disabled when cost exceeds player total
-    - [ ] When clicked and not disabled updates the player and autoclicker totals and triggers a new autoclicker accordingly
-  - [ ] Save Data
-    - [ ] Automatically saves application state to local, session, or cookie storage
-    - [ ] Automatically loads application state on page load if data exists
-  - [ ] Reset
-    - [ ] Reset button added to UI
+    - [x] Disabled when cost exceeds player total
+    - [x] When clicked and not disabled updates the player and autoclicker totals and triggers a new autoclicker accordingly
+  - [x] Save Data
+    - [x] Automatically saves application state to local, session, or cookie storage
+    - [x] Automatically loads application state on page load if data exists
+  - [x] Reset
+    - [x] Reset button added to UI
     - [ ] Disabled when game state matches initial
-    - [ ] When clicked and not disabled, resets game state to initial values and clears session, local, or cookie storage
+    - [x] When clicked and not disabled, resets game state to initial values and clears session, local, or cookie storage
 - [ ] Multi-user support
   - [ ] Stored state is indexed by user
   - [ ] Logout button added to UI

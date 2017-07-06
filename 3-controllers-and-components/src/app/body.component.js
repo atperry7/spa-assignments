@@ -7,6 +7,7 @@ const controller =
       'ngInject'
       this.service = appService
       $log.log('ft-body is a go')
+      this.service.init()
     }
 
     get amount () {

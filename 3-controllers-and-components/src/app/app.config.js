@@ -1,4 +1,5 @@
-export function config ($logProvider) {
+export function config ($logProvider, localStorageServiceProvider) {
   'ngInject'
   $logProvider.debugEnabled(true)
+  localStorageServiceProvider.setPrefix("clickerGame")
 }
