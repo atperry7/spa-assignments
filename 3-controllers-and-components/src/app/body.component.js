@@ -44,6 +44,10 @@ const controller =
     disabled () {
       return false
     }
+
+    reset () {
+      this.service.reset()
+    }
   }
 
 export const ftBody = {

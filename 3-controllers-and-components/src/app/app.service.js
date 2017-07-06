@@ -7,7 +7,7 @@ export class AppService {
   amount = 1
   total = 0
   costOfMultiplier = 10
-  costOfAutoClicker = 10
+  costOfAutoClicker = 100
   multiplier = 1.2
   autoClickerTotal = 0
 
@@ -29,5 +29,13 @@ export class AppService {
       this.total -= this.costOfAutoClicker
       this.costOfAutoClicker += this.costOfAutoClicker / 2
     }
+  }
+
+  reset() {
+    this.total = 0
+    this.costOfMultiplier = 10
+    this.costOfAutoClicker = 100
+    this.amount = 1
+    this.autoClickerTotal = 0
   }
 }
