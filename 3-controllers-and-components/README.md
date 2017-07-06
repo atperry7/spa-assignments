@@ -29,7 +29,7 @@ Controllers and Components
     - [x] Automatically loads application state on page load if data exists
   - [x] Reset
     - [x] Reset button added to UI
-    - [ ] Disabled when game state matches initial
+    - [x] Disabled when game state matches initial
     - [x] When clicked and not disabled, resets game state to initial values and clears session, local, or cookie storage
 - [ ] Multi-user support
   - [ ] Stored state is indexed by user

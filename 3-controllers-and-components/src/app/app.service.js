@@ -20,9 +20,23 @@ export class AppService {
     }
   }
 
+  defaultState = {
+    amount: 1,
+    total: 0,
+    base: {
+      costOfMultiplier: 10,
+      costOfAutoClicker: 10,
+      multiplier: 1.2,
+      autoClickerTotal: 0
+    }
+  }
+
+  resetButtonCurrentTotal = 0
+
   init() {
     if (this.localStorageService.get('total') !== null) {
       this.state.total = this.localStorageService.get('total')
+      this.resetButtonCurrentTotal = this.localStorageService.get('total')
     }
 
     if (this.localStorageService.get('multiplier') !== null) {
@@ -93,16 +107,20 @@ export class AppService {
   }
 
   reset() {
-    this.state.total = 0
-    this.state.base.costOfMultiplier = 10
-    this.state.base.costOfAutoClicker = 100
-    this.state.amount = 1
-    this.state.base.autoClickerTotal = 0
-    this.state.base.multiplier = 1.2
+    this.state.total = this.defaultState.total
+    this.state.amount = this.defaultState.amount
+    this.state.base.multiplier = this.defaultState.base.multiplier
+    this.state.base.costOfMultiplier = this.defaultState.base.costOfMultiplier
+    this.state.base.autoClickerTotal = this.defaultState.base.autoClickerTotal
+    this.state.base.costOfAutoClicker = this.defaultState.base.costOfAutoClicker
     for (var i = 0; i < this.state.intervals.length; i++) {
       this.$interval.cancel(this.state.intervals[i])
     }
     this.localStorageService.clearAll()
+  }
+
+  resetButtonCheck() {
+    return this.state.total === this.resetButtonCurrentTotal || this.state.total === this.defaultState.total
   }
 
   canAffordModifier () {

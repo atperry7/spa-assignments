@@ -53,6 +53,10 @@ const controller =
     reset () {
       this.service.reset()
     }
+
+    resetCheck () {
+      return this.service.resetButtonCheck()
+    }
   }
 
 export const ftBody = {
