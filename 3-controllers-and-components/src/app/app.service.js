@@ -5,13 +5,14 @@ export class AppService {
     this.localStorageService = localStorageService
     this.$log = $log
     this.$interval = $interval
-
   }
 
+  intervals = []
+
   state = {
+    login: 0,
     amount: 1,
     total: 0,
-    intervals: [],
     base: {
       costOfMultiplier: 10,
       costOfAutoClicker: 10,
@@ -21,6 +22,7 @@ export class AppService {
   }
 
   defaultState = {
+    login: 0,
     amount: 1,
     total: 0,
     base: {
@@ -34,54 +36,27 @@ export class AppService {
   resetButtonCurrentTotal = 0
 
   init() {
-    if (this.localStorageService.get('total') !== null) {
-      this.state.total = this.localStorageService.get('total')
-      this.resetButtonCurrentTotal = this.localStorageService.get('total')
-    }
-
-    if (this.localStorageService.get('multiplier') !== null) {
-      this.state.base.multiplier = this.localStorageService.get('multiplier')
-    }
-
-    if (this.localStorageService.get('costOfMultiplier') !== null) {
-      this.state.base.costOfMultiplier = this.localStorageService.get('costOfMultiplier')
-    }
-
-    if (this.localStorageService.get('amount') !== null) {
-      this.state.amount = this.localStorageService.get('amount')
-    }
-
-    if (this.localStorageService.get('autoClickerTotal') !== null) {
-      this.state.base.costOfAutoClicker = this.localStorageService.get('costOfAutoClicker')
-      this.state.base.autoClickerTotal = this.localStorageService.get('autoClickerTotal')
+    this.state = this.localStorageService.set(this.localStorageService.set('currentUser') + 'State', this.state)
+    if (this.state === undefined || this.state === null) {
+      this.state = this.defaultState
+      this.state.login += 1
+    } else if (this.state.base.autoClickerTotal !== null || this.state.base.autoClickerTotal !== undefined) {
+      this.state.login += 1
       for (var i = 0; i < this.state.base.autoClickerTotal; i++) {
-        this.state.intervals.push(this.$interval(() => {
+        this.intervals.push(this.$interval(() => {
           this.increment()
         }, 1000))
       }
     }
   }
 
-  saveState(action) {
-    switch (action) {
-      case 'TOTAL':
-        this.localStorageService.set('total', this.state.total)
-        break;
-      case 'MULTIPLIER':
-        this.localStorageService.set('multiplier', this.state.base.multiplier)
-        this.localStorageService.set('costOfMultiplier', this.state.base.costOfMultiplier)
-        this.localStorageService.set('amount', this.state.amount)
-        break;
-      case 'AUTOCLICKERTOTAL':
-        this.localStorageService.set('autoClickerTotal', this.state.base.autoClickerTotal)
-        this.localStorageService.set('costOfAutoClicker', this.state.base.costOfAutoClicker)
-        break;
-    }
+  saveState() {
+    this.localStorageService.set(this.localStorageService.set('currentUser') + 'State', this.state)
   }
 
   increment() {
     this.state.total += this.state.amount
-    this.saveState('TOTAL')
+    this.saveState()
   }
 
   multiply() {
@@ -90,7 +65,7 @@ export class AppService {
       this.state.total -= this.state.base.costOfMultiplier
       this.state.base.costOfMultiplier += this.state.base.costOfMultiplier / 2
       this.state.base.multiplier *= 1.5
-      this.saveState('MULTIPLIER')
+      this.saveState()
     }
   }
 
@@ -99,10 +74,10 @@ export class AppService {
       this.state.base.autoClickerTotal += 1
       this.state.total -= this.state.base.costOfAutoClicker
       this.state.base.costOfAutoClicker += this.state.base.costOfAutoClicker / 2
-      this.state.intervals.push(this.$interval(() => {
+      this.intervals.push(this.$interval(() => {
         this.increment()
       }, 1000))
-      this.saveState('AUTOCLICKERTOTAL')
+      this.saveState()
     }
   }
 
@@ -113,10 +88,9 @@ export class AppService {
     this.state.base.costOfMultiplier = this.defaultState.base.costOfMultiplier
     this.state.base.autoClickerTotal = this.defaultState.base.autoClickerTotal
     this.state.base.costOfAutoClicker = this.defaultState.base.costOfAutoClicker
-    for (var i = 0; i < this.state.intervals.length; i++) {
-      this.$interval.cancel(this.state.intervals[i])
+    for (var i = 0; i < this.intervals.length; i++) {
+      this.$interval.cancel(this.intervals[i])
     }
-    this.localStorageService.clearAll()
   }
 
   resetButtonCheck() {
@@ -131,4 +105,31 @@ export class AppService {
     return this.state.total < this.state.base.costOfAutoClicker
   }
 
+  currentUserLoggedIn() {
+    if (this.localStorageService.get('successfulLogin') === false) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  logOutCurrentUser() {
+    this.localStorageService.remove('currentUser')
+    this.localStorageService.set('successfulLogin', false)
+  }
 }
+
+// switch (action) {
+//   case 'TOTAL':
+//     this.localStorageService.set('total', this.state.total)
+//     break;
+//   case 'MULTIPLIER':
+//     this.localStorageService.set('multiplier', this.state.base.multiplier)
+//     this.localStorageService.set('costOfMultiplier', this.state.base.costOfMultiplier)
+//     this.localStorageService.set('amount', this.state.amount)
+//     break;
+//   case 'AUTOCLICKERTOTAL':
+//     this.localStorageService.set('autoClickerTotal', this.state.base.autoClickerTotal)
+//     this.localStorageService.set('costOfAutoClicker', this.state.base.costOfAutoClicker)
+//     break;
+// }

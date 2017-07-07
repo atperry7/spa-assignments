@@ -7,7 +7,6 @@ const controller =
       'ngInject'
       this.service = appService
       $log.log('ft-body is a go')
-      this.service.init()
     }
 
     get amount () {
@@ -57,6 +56,11 @@ const controller =
     resetCheck () {
       return this.service.resetButtonCheck()
     }
+
+    loggedIn () {
+      return this.service.currentUserLoggedIn()
+    }
+
   }
 
 export const ftBody = {

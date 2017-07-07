@@ -32,9 +32,9 @@ Controllers and Components
     - [x] Disabled when game state matches initial
     - [x] When clicked and not disabled, resets game state to initial values and clears session, local, or cookie storage
 - [ ] Multi-user support
-  - [ ] Stored state is indexed by user
+  - [x] Stored state is indexed by user
   - [ ] Logout button added to UI
-  - [ ] If no user is logged in, only login form is visible
+  - [x] If no user is logged in, only login form is visible
   - [ ] Upon login, the logged-in user's state is loaded into the game
   - [ ] Reset button functionality updated to only reset the current user's state
 - [x] Scaling multiplier

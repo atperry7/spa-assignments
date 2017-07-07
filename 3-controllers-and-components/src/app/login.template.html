@@ -1,0 +1,16 @@
+<div class="container" ng-hide="login.successfulLogin()">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="input-group">
+        <span class="input-group-addon" id="sizing-addon2">Username: </span>
+        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" ng-model="login.username">
+        <span class="input-group-addon" id="sizing-addon2">Password: </span>
+        <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" ng-model="login.password">
+      </div>
+    </div>
+    <div class="row">
+      <span class="col-md-6" ng-click="login.login()"><div class="ft-btn">Login!</div></span>
+      <span class="col-md-6" ng-click="login.join()"><div class="ft-btn">Join!</div></span>
+    </div>
+  </div>
+</div>
