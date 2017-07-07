@@ -9,7 +9,7 @@ Controllers and Components
 
 
 ### Milestones
-- [ ] Replicate existing functionality with AngularJS
+- [x] Replicate existing functionality with AngularJS
   - [x] Basic gameplay
     - [x] When the primary button is clicked, the player's total is incremented by the amount shown on the button
     - [x] The total displayed in the header updates automatically
@@ -31,12 +31,12 @@ Controllers and Components
     - [x] Reset button added to UI
     - [x] Disabled when game state matches initial
     - [x] When clicked and not disabled, resets game state to initial values and clears session, local, or cookie storage
-- [ ] Multi-user support
+- [x] Multi-user support
   - [x] Stored state is indexed by user
-  - [ ] Logout button added to UI
+  - [x] Logout button added to UI
   - [x] If no user is logged in, only login form is visible
-  - [ ] Upon login, the logged-in user's state is loaded into the game
-  - [ ] Reset button functionality updated to only reset the current user's state
+  - [x] Upon login, the logged-in user's state is loaded into the game
+  - [x] Reset button functionality updated to only reset the current user's state
 - [x] Scaling multiplier
   - [x] Multiplier amount increases as more multipliers are bought
 - [x] Scaling costs

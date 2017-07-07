@@ -11,6 +11,8 @@ export class LoginService {
   getUserInfo = {}
 
   login() {
+    this.$log.log(this.localStorageService.keys())
+    this.$log.log(this.localStorageService.get('currentUser'))
     return this.localStorageService.get('successfulLogin')
   }
 

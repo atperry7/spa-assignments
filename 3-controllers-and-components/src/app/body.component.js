@@ -61,6 +61,10 @@ const controller =
       return this.service.currentUserLoggedIn()
     }
 
+    logCurrentUser () {
+      this.service.logOutCurrentUser()
+    }
+
   }
 
 export const ftBody = {

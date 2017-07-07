@@ -8,6 +8,8 @@ export class AppService {
   }
 
   intervals = []
+  initialLoad = false
+  currentUser = ''
 
   state = {
     login: 0,
@@ -36,12 +38,14 @@ export class AppService {
   resetButtonCurrentTotal = 0
 
   init() {
-    this.state = this.localStorageService.set(this.localStorageService.set('currentUser') + 'State', this.state)
+    this.currentUser = this.localStorageService.get('currentUser')
+    this.state = this.localStorageService.get(this.currentUser + 'State')
     if (this.state === undefined || this.state === null) {
       this.state = this.defaultState
       this.state.login += 1
-    } else if (this.state.base.autoClickerTotal !== null || this.state.base.autoClickerTotal !== undefined) {
+    } else {
       this.state.login += 1
+      this.resetButtonCurrentTotal = this.state.total
       for (var i = 0; i < this.state.base.autoClickerTotal; i++) {
         this.intervals.push(this.$interval(() => {
           this.increment()
@@ -51,7 +55,7 @@ export class AppService {
   }
 
   saveState() {
-    this.localStorageService.set(this.localStorageService.set('currentUser') + 'State', this.state)
+    this.localStorageService.set(this.currentUser + 'State', this.state)
   }
 
   increment() {
@@ -109,12 +113,19 @@ export class AppService {
     if (this.localStorageService.get('successfulLogin') === false) {
       return true
     } else {
+      if (this.initialLoad === false) {
+        this.init()
+        this.initialLoad = true
+      }
       return false
     }
   }
 
   logOutCurrentUser() {
+    this.initialLoad = false
+    this.saveState()
     this.localStorageService.remove('currentUser')
+    this.reset()
     this.localStorageService.set('successfulLogin', false)
   }
 }
