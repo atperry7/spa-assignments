@@ -1,4 +1,4 @@
-<div class="container" ng-hide="login.successfulLogin()">
+<div class="container-fluid" ng-hide="login.successfulLogin()">
   <div class="jumbotron">
     <div class="row">
       <div class="input-group">
@@ -9,8 +9,8 @@
       </div>
     </div>
     <div class="row">
-      <span class="col-md-6" ng-click="login.login()"><div class="ft-btn">Login!</div></span>
-      <span class="col-md-6" ng-click="login.join()"><div class="ft-btn">Join!</div></span>
+      <div class="col-md-6 "><span class="ft-btn" ng-click="login.login()">Login!</span></div>
+      <div class="col-md-6"><span class="ft-btn" ng-click="login.join()">Join!</span></div>
     </div>
   </div>
 </div>
