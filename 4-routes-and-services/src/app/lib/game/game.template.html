@@ -1,0 +1,22 @@
+<button
+    class="ft-btn col-md-4"
+    ng-click="game.buyModifier()"
+    ng-disabled="!game.canAffordModifier"
+    >
+  <h2>{{game.totalModifier}} * {{game.baseModifier}}</h2>
+</button>
+
+<button
+    class="ft-btn col-md-4"
+    ng-click="game.increment()"
+    >
+  <h2>+{{game.totalIncrement}}</h2>
+</button>
+
+<button
+    class="ft-btn col-md-4"
+    ng-click="game.buyAutoclicker()"
+    ng-disabled="!game.canAffordAutoclicker"
+    >
+  <h2>+1 autoclicker</h2>
+</button>

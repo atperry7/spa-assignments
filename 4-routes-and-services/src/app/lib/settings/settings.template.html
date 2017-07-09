@@ -1,0 +1,45 @@
+<form>
+  <div class="form-group">
+    <label for="increment">Increment</label>
+    <input
+      type="number"
+      name="increment"
+      ng-model="settings.service.increment"
+      class="form-control"
+      >
+  </div>
+  <fieldset class="form-group">
+    <legend>Modifier</legend>
+    <label for="modifierAmount">Amount</label>
+    <input
+      type="number"
+      name="modifierAmount"
+      ng-model="settings.service.modifier.amount"
+      class="form-control"
+      >
+    <label for="modifierCost">Cost</label>
+    <input
+      type="number"
+      name="modifierCost"
+      ng-model="settings.service.modifier.cost"
+      class="form-control"
+      >
+  </fieldset>
+  <fieldset class="form-group">
+    <legend>Autoclicker</legend>
+    <label for="autoclickerInterval">Amount</label>
+    <input
+      type="number"
+      name="autoclickerInterval"
+      ng-model="settings.service.autoclicker.interval"
+      class="form-control"
+      >
+    <label for="autoclickerCost">Cost</label>
+    <input
+      type="number"
+      name="autoclickerCost"
+      ng-model="settings.service.autoclicker.cost"
+      class="form-control"
+      >
+  </fieldset>
+</form>
